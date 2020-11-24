@@ -40,6 +40,14 @@ router.get('/:id', (req, res, next) => {
         });
 });
 
+router.post('/:id/delete', (req,res, next) => {
+    Celebrity.findByIdAndDelete(req.params.id)
+        .then(() => {
+            res.redirect('/celebrities')
+        })
+        .catch( err =>  console.log(`Error when deleting: ${err}`))
+});
+
 
 
 
