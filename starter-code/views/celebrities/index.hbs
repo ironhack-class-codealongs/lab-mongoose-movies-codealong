@@ -1,17 +1,8 @@
-<h2>Celebrities:</h2>
+<h2>Celebrity list:</h2>
 
 {{#each celebrities}}
     <div class="celebrity">
         <h3>{{this.name}}</h3>
-
-        <p>
-            <strong>Occupation: </strong>
-            {{this.occupation}}
-        </p>
-
-        <p>
-            <strong>Catch Phrase: </strong>
-            {{this.catchPhrase}}
-        </p>
+        <a href="/celebrities/{{this.id}}">See details</a>
     </div>
 {{/each}}

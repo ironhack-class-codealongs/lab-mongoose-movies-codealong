@@ -13,4 +13,18 @@ router.get('/', (req, res, next) => {
         });
 });
 
+
+router.get('/:id', (req, res, next) => {
+    Celebrity.findById(req.params.id)
+        .then(celebrity => {
+            res.render('celebrities/show', celebrity);
+        })
+        .catch(err => {
+            console.log(`Error getting data from DB: ${err}`)
+            next(err);
+        });
+});
+
+
+
 module.exports = router;
