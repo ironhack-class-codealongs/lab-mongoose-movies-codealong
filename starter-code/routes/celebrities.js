@@ -48,9 +48,17 @@ router.post('/:id/delete', (req,res, next) => {
         .catch( err =>  console.log(`Error when deleting: ${err}`))
 });
 
+router.get('/:id/edit', (req, res, next) => {
+    Celebrity.findById(req.params.id)
+        .then(celebrity => res.render('celebrities/edit', celebrity))
+        .catch(err => next(err));
+});
 
-
-
+router.post('/:id/edit', (req, res, next) => {
+    Celebrity.findByIdAndUpdate(req.params.id, req.body)
+        .then(()=> res.redirect('/celebrities'))
+        .catch(err => next(err));
+});
 
 
 module.exports = router;
